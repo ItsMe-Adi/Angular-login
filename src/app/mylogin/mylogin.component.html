@@ -1,0 +1,26 @@
+
+<div class="loginbox">
+  <img src="../../assets/docquity_logo.png" class="avatar">
+    <h1>Login Here</h1>
+      <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit()">
+        <p>Username</p>
+        <input type="email" name="email" placeholder="Enter Email" #emailinput="ngModel" [(ngModel)]="userdata.email" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(docquity.com)$"/>
+        <div *ngIf="emailinput.errors && (emailinput.dirty || emailinput.touched)">
+          <p *ngIf="emailinput.errors.required">Email is Required</p>
+          <p *ngIf="emailinput.errors.pattern">Email is invalid</p>
+        </div>
+        <p>Password</p>
+        <input type="password" name="Password" placeholder="Enter Password" #passwordinput="ngModel" [(ngModel)]="userdata.password" required pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$"/>
+        <div *ngIf="passwordinput.errors && (passwordinput.dirty || passwordinput.touched)">
+          <p *ngIf="passwordinput.errors.required">Password is Required</p>
+          <p *ngIf="passwordinput.errors.pattern">Password is invalid</p>
+        </div>
+        <input type="submit" value="Login" [disabled]="!userlogin.valid"/>
+      </form>
+</div>
+
+
+
+
+
+
